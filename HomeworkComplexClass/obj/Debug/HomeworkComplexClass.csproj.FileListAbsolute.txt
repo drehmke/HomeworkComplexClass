@@ -1,0 +1,6 @@
+C:\programming\FullStackDotNet\WeekThree\HomeworkComplexClass\HomeworkComplexClass\bin\Debug\HomeworkComplexClass.exe.config
+C:\programming\FullStackDotNet\WeekThree\HomeworkComplexClass\HomeworkComplexClass\obj\Debug\HomeworkComplexClass.csprojResolveAssemblyReference.cache
+C:\programming\FullStackDotNet\WeekThree\HomeworkComplexClass\HomeworkComplexClass\bin\Debug\HomeworkComplexClass.exe
+C:\programming\FullStackDotNet\WeekThree\HomeworkComplexClass\HomeworkComplexClass\bin\Debug\HomeworkComplexClass.pdb
+C:\programming\FullStackDotNet\WeekThree\HomeworkComplexClass\HomeworkComplexClass\obj\Debug\HomeworkComplexClass.exe
+C:\programming\FullStackDotNet\WeekThree\HomeworkComplexClass\HomeworkComplexClass\obj\Debug\HomeworkComplexClass.pdb
