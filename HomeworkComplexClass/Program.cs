@@ -16,7 +16,7 @@ namespace ComplexClass
             string printString;
             if( account.isOpen == true)
             {
-                printString = String.Format("{0}'s {1} has a balance of ${2}", FirstName, account.Type, account.Amount);
+                printString = String.Format("{0}'s {1} has a balance of {2:c}", FirstName, account.Type, account.Amount);
             }
             else
             {
@@ -50,8 +50,8 @@ namespace ComplexClass
     {
         static void Main(string[] args)
         {
-            Account checkingAccount = new Account(1, 100.00m, "Checking", true);
-            Account savingsAccount = new ComplexClass.Account(2, 0.00m, "Savings", false);
+            Account checkingAccount = new Account(1, 100m, "Checking", true);
+            Account savingsAccount = new ComplexClass.Account(2, 0m, "Savings", false);
             Customer bankUser = new Customer("Alice", checkingAccount, savingsAccount);
 
             Console.WriteLine(bankUser.WriteInfo(bankUser.CheckingAccount));
