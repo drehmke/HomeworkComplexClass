@@ -16,13 +16,46 @@ namespace ComplexClass
             string printString;
             if( account.isOpen == true)
             {
-                printString = String.Format("{0}'s {1} has a balance of {2:c}", FirstName, account.Type, account.Amount);
+                printString = String.Format("{0}'s {1} has a balance of {2:c} and is open. \n", FirstName, account.Type, account.Amount);
             }
             else
             {
-                printString = String.Format("{0}'s {1} account is not currently open.", FirstName, account.Type);
+                printString = String.Format("{0}'s {1} account is not currently open and has a balance of {2:c}. \n", FirstName, account.Type, account.Amount);
             }
             return printString;
+        }
+        public string Transfer(string from, string to, decimal amt)
+        {
+            Account[] accounts = { CheckingAccount, SavingsAccount };
+            string printMe = "";
+            foreach(Account acct in accounts)
+            {
+                if (acct.Type == from)
+                {
+                    decimal tempAmt = acct.Amount;
+                    acct.Amount = acct.Amount - amt;
+                    printMe += String.Format("{0:c} was moved from {1} to {2}. \n", amt, acct.Type, to);
+                    printMe += String.Format("The new balance of {0} is {1:c}. \n", acct.Type, acct.Amount);
+                    if( (tempAmt > 0) && (acct.Amount <=  0))
+                    {
+                        acct.isOpen = false;
+                        printMe += String.Format("{0} account has been closed because the balance is zero or below. \n", acct.Type);
+                    }
+                }
+                else
+                {
+                    decimal tempAmt = acct.Amount;
+                    acct.Amount = acct.Amount + amt;
+                    printMe += String.Format("{0:c} was moved to {1} from {2}. \n", amt, acct.Type, from);
+                    printMe += String.Format("The new balance of {0} is {1:c}. \n", acct.Type, acct.Amount);
+                    if ((tempAmt <= 0) && (acct.Amount > 0))
+                    {
+                        acct.isOpen = true;
+                        printMe += String.Format("{0} account has been re-opened because it has a balance above zero. \n", acct.Type);
+                    }
+                }
+            }
+            return printMe;
         }
         public Customer( string firstName, Account checking, Account savings )
         {
@@ -56,6 +89,8 @@ namespace ComplexClass
 
             Console.WriteLine(bankUser.WriteInfo(bankUser.CheckingAccount));
             Console.WriteLine(bankUser.WriteInfo(bankUser.SavingsAccount));
+            Console.WriteLine(bankUser.Transfer(bankUser.CheckingAccount.Type, bankUser.SavingsAccount.Type, 50m));
+            Console.WriteLine(bankUser.Transfer(bankUser.SavingsAccount.Type, bankUser.CheckingAccount.Type, 75m));
             Console.ReadLine();
         }
     }
